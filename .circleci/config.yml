@@ -42,7 +42,7 @@ jobs:
       #- run: mvn integration-test
       
   
-      - mvn clean install
-      - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-      - find . -type f -regex ".*/target/failsafe-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+      -run: mvn clean install
+      -run: mkdir -p $CIRCLE_TEST_REPORTS/junit/
+      -run: find . -type f -regex ".*/target/failsafe-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
 
