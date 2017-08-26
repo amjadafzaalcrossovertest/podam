@@ -10,14 +10,14 @@
 
 	<groupId>uk.co.jemos.podam</groupId>
 	<artifactId>podam</artifactId>
-	<version>7.0.0-SNAPSHOT</version>
+	<version>7.1.1-SNAPSHOT</version>
 	<name>podam</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<serenity.version>1.1.36</serenity.version>
-		<spring.version>4.1.6.RELEASE</spring.version>
-		<log4j.version>2.6.2</log4j.version>
+		<serenity.version>1.2.2</serenity.version>
+		<spring.version>4.3.10.RELEASE</spring.version>
+		<log4j.version>2.8.2</log4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<github.global.server>github</github.global.server>
@@ -143,6 +143,20 @@
                 <role>Developer</role>
             </roles>
         </contributor>
+		<contributor>
+			<name>Massimiliano Di Dato</name>
+			<email>didatomax@gmail.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</contributor>
+                <contributor>
+                        <name>Andrey Artyukhov</name>
+			<email>andrey.artyukhov@constant.obninsk.ru</email>
+                        <roles>
+                                <role>Developer</role>
+                        </roles>
+                </contributor>
 	</contributors>
 
 
@@ -292,6 +306,20 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.6.201602180812</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -392,21 +420,15 @@
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
 		<site>
 			<id>github-project-site</id>
 			<url>gitsite:git@github.com/devopsfolks/podam.git</url>
 		</site>
 	</distributionManagement>
-	<repositories>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-		<repository>
-                        <id>egit</id>
-                        <url>https://repo.eclipse.org/content/repositories/egit-releases/</url>
-                </repository>
-	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -417,7 +439,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.21</version>
+			<version>1.7.25</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.annotation</groupId>
@@ -432,7 +454,7 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.4</version>
+			<version>3.6</version>
 		</dependency>
 
 		<!-- Testing dependencies -->
@@ -469,10 +491,15 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>5.2.4.Final</version>
+			<version>5.4.0.Final</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0.2</version>
+			<scope>test</scope>
+		</dependency>
 
 		<!-- Spring framework -->
 		<dependency>
