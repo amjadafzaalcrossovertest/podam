@@ -42,10 +42,11 @@ jobs:
       #- run: mvn integration-test
       
   
-      #- run: mvn clean install      
-      - run: export CIRCLE_TEST_REPORTS=~/repo
-      - run: echo $CIRCLE_TEST_REPORTS
-      - run: mkdir -p ~/repo/junit/
-      - run: find . -type f -regex ".*/target/failsafe-reports/.*xml" -exec cp {} ~/repo/junit/ \;
-
+      - run: mvn clean install
+      
+      - store_test_results:
+          path: target/surefire-reports
+      
+      - store_artifacts:
+          path: target/podam-0.0.1-SNAPSHOT.jar
 
